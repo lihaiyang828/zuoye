@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        RegExp.prototype.execAll = function (str) {
+            let arr = [];
+            let _this = this;
+            if (!_this.global) {
+                _this = eval(_this + 'g');
+            }
+            let res = _this.exec(str);
+            while (res) {
+                arr.push(res[0]);
+                res = _this.exec(str);
+            }
+            return arr;
+        };
+        var str = 'https://baicu.com?abc=123&zf=666&px=888&_=t';
+        var reg = /([^?&+]+)=([^?&=]+)/g;
+        let arr = reg.execAll(str);
+        console.log(arr);
+        let ary = [];
+        let obj = {};
+        arr.forEach(item => {
+            let reg = /[a-z0-9_]+/g;
+            ary.push(reg.execAll(item));
+        });
+        ary.forEach(item => {
+            obj[item[0]] = item[1];
+        });
+        console.log(obj);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 获取一个字符串中出现次数最多的字符 及其 次数
+        var str = 'ertefvzdgfergsegfsdrgrgfbshtrh';
+        let obj = {};
+        [].forEach.call(str, item => {
+            if (typeof obj[item] !== 'undefined') {
+                obj[item]++;
+            } else {
+                obj[item] = 1;
+            }
+        });
+        console.log(obj);
+        let max = 0;
+        let arr = [];
+        for (let key in obj) {
+            let item = obj[key];
+            item > max ? max = item : null;
+        }
+        for (let i in obj) {
+            let item = obj[i];
+            item == max ? arr.push(i) : null;
+        }
+        console.log(`出现最多的字符是${arr},出现的次数是${max}次`)
+    </script>
+</body>
+
+</html>
