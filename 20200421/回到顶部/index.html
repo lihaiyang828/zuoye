@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 5000px;
+        }
+
+        button {
+            width: 100px;
+            height: 35px;
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button>回到顶部</button>
+    <script>
+        let btn = document.querySelector('button');
+        window.onscroll = function () {
+            if (document.documentElement.scrollTop >= document.documentElement.clientHeight) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        }
+        btn.onclick = function () {
+            let top = document.documentElement.scrollTop;
+            let A = Math.round(top / (1000 / 20));
+            let timer = setInterval(() => {
+                top -= A;
+                if (top <= 0) {
+                    top = 0;
+                    clearInterval(timer)
+                }
+                document.documentElement.scrollTop = top;
+            }, 20);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: lightcoral;
+            margin: 100px auto;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        let box = document.querySelector('#box');
+        let opa = parseFloat(window.getComputedStyle(box)["opacity"]);
+        box.onclick = function () {
+            let A = (1 - opa) / (1000 / 20);
+            let timer = setInterval(() => {
+                opa += A;
+                if (opa > 1) {
+                    opa = 1;
+                    clearInterval(timer);
+                }
+                this.style.opacity = opa;
+            }, 20);
+        }
+    </script>
+</body>
+
+</html>
