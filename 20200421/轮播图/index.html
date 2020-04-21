@@ -59,41 +59,53 @@
     let start = -600;
     let timer = null;
     ul.style.transform = `translateX(${start}px)`;
-
+    btnS[0].className = 'active';
     function move() {
         timer = setInterval(() => {
             start -= 600;
             // ul.style.left = start  + 'px';
-            if (start < -3600) {
+            if (start < -3000) {
                 // 小于 -3000的时候 证明条已经出去了
                 // -3000的时候 我们显示的是伪第一张
-                start = -600;
+                start = 0;
                 ul.style.transition = 'none';
                 ul.style.transform = `translateX(${start}px)`;
                 // 闪到第一张之后  紧接着要向第二张移动 而不是再等1.5s;
                 let l = ul.offsetHeight;
                 // 读取操作会让浏览器重新渲染；
-                start = -1200;
+                start = -600;
                 ul.style.transition = 'all 0.3s'
             } else {
                 ul.style.transition = 'all 0.3s';
             }
             ul.style.transform = `translateX(${start}px)`;
+            btnS[(start / -600) - 1].className = 'active';
+            for (let i = 0; i < btnS.length; i++) {
+                if ((start / -600) - 1 != i) {
+                    btnS[i].className = '';
+                }
+            }
         }, 1500);
     }
     move();
     rightBtn.onclick = function () {
         start -= 600;
-        if (start < -3600) {
-            start = -600;
+        if (start < -3000) {
+            start = 0;
             ul.style.transition = 'none';
             ul.style.transform = `translateX(${start}px)`;
             let l = ul.offsetHeight;
-            start = -1200;
+            start = -600;
             ul.style.transition = 'all 0.3s'
         }
         ul.style.transition = 'all 0.3s'
         ul.style.transform = `translateX(${start}px)`;
+        btnS[(start / -600) - 1].className = 'active';
+        for (let i = 0; i < btnS.length; i++) {
+            if ((start / -600) - 1 != i) {
+                btnS[i].className = '';
+            }
+        }
     }
     leftBtn.onclick = function () {
         start += 600;
@@ -106,6 +118,12 @@
             ul.style.transition = 'all 0.3s'
         }
         ul.style.transform = `translateX(${start}px)`;
+        btnS[(start / -600) - 1].className = 'active';
+        for (let i = 0; i < btnS.length; i++) {
+            if ((start / -600) - 1 != i) {
+                btnS[i].className = '';
+            }
+        }
     }
     btnS.forEach((item, index) => {
         item.onclick = function () {
