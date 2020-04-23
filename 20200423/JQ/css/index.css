@@ -1,0 +1,89 @@
+.container {
+	position: relative;
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 800px;
+	height: 240px;
+	overflow: hidden;
+}
+
+.container .wrapper {
+	/* 让WRAPPER相对于容器定位，后期的左右运动是修改WRAPPER的LEFT样式值即可 */
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	/*WIDTH 需要根据SLIDER（包含克隆的）动态计算出来的 */
+	display: flex;
+	box-sizing: border-box;
+	width: 4000px;
+	height: 100%;
+
+	/* 基于CSS3中的过渡动画实现切换中的动画效果 */
+	transition: left .3s linear 0s;
+}
+
+.container .wrapper .slider {
+	/* 每一个SLIDER的宽度和CONTAINER的宽度保持一致 */
+	box-sizing: border-box;
+	width: 800px;
+	height: 100%;
+	overflow: hidden;
+}
+
+.container .wrapper .slider img {
+	width: 100%;
+	height: 100%;
+}
+
+/* 分页器 */
+.pagination {
+	position: absolute;
+	z-index: 999;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 5px 10px;
+	background: rgba(255, 255, 255, .3);
+	font-size: 0;
+	border-radius: 26px;
+}
+
+.pagination li {
+	display: inline-block;
+	margin: 0 10px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: lightblue;
+	cursor: pointer;
+}
+
+.pagination li.active {
+	background: lightcoral;
+}
+
+/* 左右按钮 */
+.arrow {
+	display: none;
+	position: absolute;
+	z-index: 999;
+	top: 50%;
+	margin-top: -22.5px;
+	width: 30px;
+	height: 45px;
+	background: url(../images/pre.png) no-repeat 0 0;
+}
+
+.arrow.changeLeft {
+	left: 0;
+}
+
+.arrow.changeRight {
+	right: 0;
+	background-position: -50px 0;
+}
+
+.container:hover .arrow {
+	display: block;
+}
