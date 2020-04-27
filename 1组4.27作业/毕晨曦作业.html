@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <style>
+          *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+           height: 300px;
+           width: 300px;
+           position: fixed;
+         transform: translateX();
+         display: none;
+        }
+        #box img{
+            width: 100%;
+            height: 100%;
+        }
+        #box1{
+            height: 100px;
+            width: 100px;
+            border: 1px solid #000;
+           
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box">
+       <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1587990040&di=abab80063df837f7198461fe3899453e&src=http://a0.att.hudong.com/64/76/20300001349415131407760417677.jpg" alt="">
+    </div>
+
+    <script>
+        let i = 1;
+
+        function fn(){
+           
+        window.onmousemove = (e)=>{
+            if(i === -1)return
+            console.log(e.clientX)
+            box.style.transform = `translate(${e.clientX -= 50}px,${e.clientY -= 50}px)`       ;
+        }
+        }
+        window.onclick = () =>{
+            i *= -1
+            box.style.display = 'none'
+            if(i !==- 1){
+                box.style.display = 'block'
+            }
+            fn()
+        }
+
+        box1.onmouseenter = ()=>{
+           box.style.display = 'block'
+                fn()
+            
+        }
+
+        
+
+        
+
+      
+    </script>
+    
+</body>
+</html>

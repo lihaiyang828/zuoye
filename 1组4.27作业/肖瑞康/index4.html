@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 189px;
+            margin: 10px 10px;
+        }
+        #box1 img{
+            width: 100%;
+            height: 100%;
+        }
+        #img1{
+            top: 50px;
+            left: 50px;
+            position: fixed;
+            width: 1000px;
+            height: 489px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1588001724&di=823ac26e220d4d1a461a5011ca619af9&src=http://a3.att.hudong.com/14/75/01300000164186121366756803686.jpg" alt="">
+    </div>
+    <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1588001724&di=823ac26e220d4d1a461a5011ca619af9&src=http://a3.att.hudong.com/14/75/01300000164186121366756803686.jpg" alt="" id="img1">
+</body>
+</html>
+<script>
+    box1.onmousemove = function (e) {
+        img1.style.display = 'block';
+        img1.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+    }
+    box1.onmouseleave = function () {
+        img1.style.display = 'none';
+    };
+</script>

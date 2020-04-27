@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1,
+        #box2 {
+            width: 300px;
+            float: left;
+            margin: 10px;
+        }
+
+        #box1 img,
+        #box2 img {
+            width: 100%;
+        }
+
+        #img1,
+        #img2 {
+            width: 700px;
+            display: none;
+        }
+
+        #box3 {
+            width: 150px;
+            height: 150px;
+            border: 1px solid rebeccapurple;
+            overflow: hidden;
+            position: fixed;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <img src="./1.JPG" alt="">
+    </div>
+    <div id="box2">
+        <img src="./2.jpg" alt="">
+    </div>
+    <div id="box3">
+        <img src="./1.jpg" alt="" id="img1">
+        <img src="./2.jpg" alt="" id="img2">
+    </div>
+    <script>
+        img1.style.display = 'block';
+        img2.style.display = 'block';
+        let img1W = img1.offsetWidth,
+            img2W = img2.offsetWidth;
+        img1.style.display = 'none';
+        img2.style.display = 'none';
+        box3.style.display = 'none';
+        let ratio1 = img1W / box1.offsetWidth,
+            ratio2 = img1W / box2.offsetWidth;
+        box1.onmousemove = function (e) {
+            box3.style.display = 'block';
+            img1.style.display = 'block';
+            box3.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+            img1.style.transform =
+                `translate(${-e.offsetX*ratio1+box3.offsetWidth/2}px,${-e.offsetY*ratio1+box3.offsetWidth/2}px)`;
+
+        }
+        box1.onmouseleave = function () {
+            box3.style.display = 'none';
+            img1.style.display = 'none';
+        }
+        box2.onmousemove = function (e) {
+            box3.style.display = 'block';
+            img2.style.display = 'block';
+            box3.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+            img2.style.transform =
+                `translate(${-e.offsetX*ratio2+box3.offsetWidth/2}px,${-e.offsetY*ratio2+box3.offsetWidth/2}px)`;
+        }
+        box2.onmouseleave = function () {
+            box3.style.display = 'none';
+            img2.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

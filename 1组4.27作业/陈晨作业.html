@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #_box{
+        width: 300px;
+        height: 189px;
+        border: 3px solid aqua;
+        box-sizing: border-box;
+        margin: 10px 10px;
+    }
+    #_box1 {    
+        width: 300px;
+        height: 189px;
+        border: 3px solid aqua;
+        box-sizing: border-box;
+        margin: 10px 10px;
+    }
+    #img1,
+    #img2 {
+        top: 50px;
+        left: 50px;
+        position: fixed;
+        width: 300px;
+        height: 189px;
+        display: none;
+    }
+
+    #_box img,
+    #_box1 img {
+        width: 100%;
+
+    }
+</style>
+
+<body>
+
+    <div id="_box">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587997836825&di=6ec31171ca6f1b668a709b05a7b094e9&imgtype=0&src=http%3A%2F%2Fp3.pstatp.com%2Flarge%2Fpgc-image%2F65ddbe2f88004509a4af1bd86571d2ed"
+            alt="">
+    </div>
+    <div id="_box1">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587998324008&di=5b072736502b2699707852991f2b22ec&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fent%2Ftransform%2F20170123%2FetHI-fxzvcvf9498984.jpg"
+            alt="">
+    </div>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587997836825&di=6ec31171ca6f1b668a709b05a7b094e9&imgtype=0&src=http%3A%2F%2Fp3.pstatp.com%2Flarge%2Fpgc-image%2F65ddbe2f88004509a4af1bd86571d2ed"
+        alt="" id="img2">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587998324008&di=5b072736502b2699707852991f2b22ec&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fent%2Ftransform%2F20170123%2FetHI-fxzvcvf9498984.jpg"
+        alt="" id="img1">
+
+</body>
+
+</html>
+<script>
+    _box.onmousemove = function (e) {
+        img2.style.display = 'block';
+        img2.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+    }
+    _box.onmouseleave = function () {
+        img2.style.display = 'none';
+    };
+    _box1.onmousemove = function (e) {
+        img1.style.display = 'block';
+        img1.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+    }
+    _box1.onmouseleave = function () {
+        img1.style.display = 'none';
+    };
+</script>
